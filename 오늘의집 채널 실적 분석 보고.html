@@ -1,0 +1,368 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0054)file:///C:/Users/20260007/Downloads/ohouse_report.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의집 채널 실적 분석 보고</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./오늘의집 채널 실적 분석 보고_files/css2" rel="stylesheet">
+<script src="./오늘의집 채널 실적 분석 보고_files/chart.umd.min.js.다운로드"></script>
+<style>
+  :root{--primary:#374151;--primary-light:#f3f4f6;--up:#6b7280;--up-bg:#f9fafb;--dn:#dc2626;--dn-bg:#fef2f2;--neu:#9ca3af;--neu-bg:#f9fafb;--border:#e5e7eb;--shadow:0 1px 4px rgba(0,0,0,.08);--accent:#1d7a4a;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#f1f5f9;color:#1e293b;font-size:13px}
+  a{color:var(--primary);text-decoration:none}
+  nav{position:fixed;top:0;left:0;width:200px;height:100vh;background:#1e293b;overflow-y:auto;z-index:100;padding:20px 0}
+  nav h2{color:#94a3b8;font-size:10px;font-weight:600;letter-spacing:.08em;padding:0 16px 8px;text-transform:uppercase}
+  nav a{display:block;color:#cbd5e1;font-size:12px;padding:7px 16px;border-left:3px solid transparent;transition:.15s}
+  nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,.08);border-left-color:var(--accent)}
+  nav .logo{color:#fff;font-size:14px;font-weight:700;padding:4px 16px 20px;border-bottom:1px solid #334155;margin-bottom:12px}
+  nav .logo span{color:#6ee7b7;font-size:11px;display:block;font-weight:400;margin-top:2px}
+  main{margin-left:200px;padding:28px 32px;min-height:100vh}
+  .page-title{font-size:22px;font-weight:700;color:#0f172a;margin-bottom:4px}
+  .page-sub{color:#64748b;font-size:13px;margin-bottom:28px}
+  section{margin-bottom:40px}
+  .sec-title{font-size:16px;font-weight:700;color:#0f172a;padding-bottom:10px;border-bottom:2px solid #374151;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+  .sec-title .badge{background:#374151;color:#fff;font-size:10px;padding:2px 8px;border-radius:99px;font-weight:600}
+  .sub-title{font-size:13px;font-weight:600;color:#334155;margin:20px 0 10px;padding-left:8px;border-left:3px solid #6b7280}
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+  .kpi{background:#fff;border-radius:10px;padding:18px 20px;box-shadow:var(--shadow);border:1px solid var(--border)}
+  .kpi-label{font-size:11px;color:#64748b;font-weight:600;margin-bottom:6px}
+  .kpi-value{font-size:26px;font-weight:800;color:#0f172a}
+  .kpi-value span{font-size:13px;font-weight:400;color:#64748b}
+  .kpi-sub{font-size:11px;margin-top:6px}
+  .kpi-grid4{grid-template-columns:repeat(4,1fr)}
+  .chart-wrap{background:#fff;border-radius:10px;padding:18px 20px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:16px}
+  .chart-title{font-size:12px;font-weight:700;color:#475569;margin-bottom:14px}
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .chart-row .chart-wrap{margin-bottom:0}
+  .tbl-wrap{background:#fff;border-radius:10px;padding:18px 20px;box-shadow:var(--shadow);border:1px solid var(--border);overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{background:#f8fafc;color:#475569;font-weight:600;padding:8px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap}
+  td{padding:7px 10px;border-bottom:1px solid #f1f5f9;text-align:right;white-space:nowrap}
+  td:first-child{text-align:left;font-weight:500;color:#334155}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:#f8fafc}
+  .total-row td{background:#f3f4f6!important;font-weight:700;color:#374151}
+  .up{color:#6b7280;font-weight:700}
+  .dn{color:var(--dn);font-weight:700}
+  .neu{color:var(--neu)}
+  .badge-up{background:#f3f4f6;color:#374151;padding:1px 7px;border-radius:99px;font-size:11px;font-weight:700}
+  .badge-dn{background:var(--dn-bg);color:var(--dn);padding:1px 7px;border-radius:99px;font-size:11px;font-weight:700}
+  .badge-neu{background:#f3f4f6;color:#6b7280;padding:1px 7px;border-radius:99px;font-size:11px;font-weight:600}
+  .new-badge{background:#f0fdf4;color:#16a34a;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:700}
+  .tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+  .tab-btn{padding:6px 14px;border-radius:6px;border:1px solid var(--border);background:#fff;color:#475569;font-size:12px;font-weight:600;cursor:pointer;transition:.15s}
+  .tab-btn.active{background:#374151;color:#fff;border-color:#374151}
+  .tab-content{display:none}
+  .tab-content.active{display:block}
+  .insight{background:#f3f4f6;border-left:4px solid #374151;border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:14px;font-size:12px;line-height:1.7;color:#374151}
+  .insight strong{color:#1f2937}
+  .warn-insight{background:#fef2f2;border-left-color:#dc2626;color:#7f1d1d}
+  .warn-insight strong{color:#dc2626}
+  .good-insight{background:#f0fdf4;border-left-color:#16a34a;color:#14532d}
+  .good-insight strong{color:#16a34a}
+  .strategy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+  .strategy-card{background:#fff;border-radius:10px;padding:16px;box-shadow:var(--shadow);border:1px solid var(--border);border-top:3px solid #374151}
+  .strategy-card h4{font-size:12px;font-weight:700;color:#374151;margin-bottom:8px}
+  .strategy-card p{font-size:11px;color:#475569;line-height:1.6}
+  .rank{display:inline-block;width:20px;height:20px;background:#9ca3af;color:#fff;border-radius:50%;text-align:center;line-height:20px;font-size:10px;font-weight:700;margin-right:4px}
+  .rank1{background:#dc2626}.rank2{background:#6b7280}.rank3{background:#9ca3af}
+  .cat{display:inline-block;padding:1px 8px;border-radius:4px;font-size:10px;font-weight:700;color:#fff}
+  .cat-수납{background:#374151}.cat-거실{background:#4b5563}.cat-침실{background:#6b7280}
+  .cat-키즈{background:#9ca3af}.cat-주방{background:#dc2626}.cat-서재{background:#1f2937}
+  .ana-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:#f1f5f9}::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:99px}
+  /* 심층분석 섹션 gray-tone override */
+  #s4 .warn-insight,#s4 .good-insight,
+  #s5 .warn-insight,#s5 .good-insight,
+  #s6 .warn-insight,#s6 .good-insight,
+  #s7 .warn-insight,#s7 .good-insight,
+  #s8 .warn-insight,#s8 .good-insight,
+  #s9 .warn-insight,#s9 .good-insight{background:#f8fafc;border-left-color:#9ca3af;color:#374151}
+  #s4 .warn-insight strong,#s4 .good-insight strong,
+  #s5 .warn-insight strong,#s5 .good-insight strong,
+  #s6 .warn-insight strong,#s6 .good-insight strong,
+  #s7 .warn-insight strong,#s7 .good-insight strong,
+  #s8 .warn-insight strong,#s8 .good-insight strong,
+  #s9 .warn-insight strong,#s9 .good-insight strong{color:#4b5563}
+  .critical-insight{background:#fef2f2 !important;border-left-color:#dc2626 !important;color:#7f1d1d !important}
+  .critical-insight strong{color:#dc2626 !important}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">오늘의집 채널 분석<span>2026년 5월 기준</span></div>
+  <h2>채널 개요</h2>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s1-1">연도별 매출 추이</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s1-2">월별 합산 매출 · YoY</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s1-3">PB / EP 매출 비중</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s1-4">26년 PB 월별 현황</a>
+  <h2 style="margin-top:12px">카테고리 현황</h2>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s2-2">카테고리별 매출 · YoY</a>
+  <h2 style="margin-top:12px">상세 현황</h2>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s3">카테고리별 TOP 10</a>
+  <h2 style="margin-top:12px">심층 분석</h2>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s4">주방 하락 원인</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s4-strategy">주방 운영 전략</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s5">서재 하락 원인</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s5-strategy">서재 운영 전략</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s6">거실 현황·전략</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s6-strategy">거실 운영 전략</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s7">수납 하락 원인</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s7-strategy">수납 운영 전략</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s8">키즈 하락 원인</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s8-strategy">키즈 운영 전략</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s9">침실 현황·전략</a>
+  <a href="file:///C:/Users/20260007/Downloads/ohouse_report.html#s9-strategy">침실 운영 전략</a>
+</nav>
+
+<main>
+  <div class="page-title">오늘의집 채널 실적 분석 보고</div>
+  <div class="page-sub">분석 기준 : PB(자료기준 ON 매출액) + EP(EP매출기준금액) 합산 &nbsp;|&nbsp; 데이터 기간 : 2024.01 ~ 2026.04 &nbsp;|&nbsp; 작성 : 2026.05</div>
+
+  <section id="s1">
+    <div class="sec-title"><span class="badge">1</span> 오늘의집 채널 개요</div>
+
+    <div id="s1-1" class="sub-title">1-1. 연도별 전체 매출 추이 (PB+EP 합산)</div>
+    <div class="kpi-grid kpi-grid4">
+      <div class="kpi"><div class="kpi-label">2024년 합산 매출</div><div class="kpi-value">105.07<span> 억원</span></div><div class="kpi-sub neu">PB 73.10억 / EP 31.97억</div></div>
+      <div class="kpi"><div class="kpi-label">2025년 합산 매출</div><div class="kpi-value">142.29<span> 억원</span></div><div class="kpi-sub"><span class="up">▲ +35.4% YoY</span> &nbsp; PB 104.77억 / EP 37.52억</div></div>
+      <div class="kpi"><div class="kpi-label">2025년 1~4월 합산 (누적)</div><div class="kpi-value">49.61<span> 억원</span></div><div class="kpi-sub neu">PB 37.57억 / EP 12.04억</div></div>
+      <div class="kpi"><div class="kpi-label">2026년 1~4월 합산 (누적)</div><div class="kpi-value">44.72<span> 억원</span></div><div class="kpi-sub"><span class="dn">▼ -9.9% YoY</span> &nbsp; PB 29.55억 / EP 15.17억</div></div>
+    </div>
+    <div class="chart-wrap"><div class="chart-title">월별 PB · EP 합산 매출 비교 (억원) — 2025년 vs 2026년 (1~4월)</div><canvas id="chartAnnual" height="429" style="display: block; box-sizing: border-box; height: 429px; width: 1609px;" width="1609"></canvas></div>
+    <div class="insight" style="margin-top:8px;margin-bottom:16px;background:#f8fafc;border-left:4px solid #374151;padding:10px 14px;border-radius:4px;font-size:13px;color:#374151">
+      <strong>26년 1~4월 누적 기준</strong> &nbsp;|&nbsp; PB YoY <span class="dn">▼ -21%</span> &nbsp;·&nbsp; EP YoY <span class="up">▲ +27%</span>
+    </div>
+
+    <div id="s1-2" class="sub-title">1-2. 월별 합산 매출 및 YoY (25.06 ~ 26.04)</div>
+    <div class="chart-wrap"><div class="chart-title">월별 합산 매출 추이 (억원)</div><canvas id="chartMonthly" height="482" width="1609" style="display: block; box-sizing: border-box; height: 482px; width: 1609px;"></canvas></div>
+    <div class="chart-wrap"><div class="chart-title">PB+EP 합산 매출 YoY (%) — 전년 동월 대비</div><canvas id="chartMonthlyYoY" height="375" width="1609" style="display: block; box-sizing: border-box; height: 375px; width: 1609px;"></canvas></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>년월</th><th>PB(억)</th><th>EP(억)</th><th>합산(억)</th><th>PB YoY</th><th>EP YoY</th><th>합산 YoY</th></tr></thead>
+      <tbody id="tbMonthly"><tr><td>25.06</td><td>7.87</td><td>2.47</td><td><strong>10.34</strong></td><td><span class="badge-up">+89.6%</span></td><td><span class="badge-dn">-3.1%</span></td><td><span class="badge-up">+54.4%</span></td></tr><tr><td>25.07</td><td>8.60</td><td>2.19</td><td><strong>10.79</strong></td><td><span class="badge-up">+49.7%</span></td><td><span class="badge-dn">-22.9%</span></td><td><span class="badge-up">+25.6%</span></td></tr><tr><td>25.08</td><td>8.24</td><td>3.08</td><td><strong>11.32</strong></td><td><span class="badge-up">+45.9%</span></td><td><span class="badge-up">+16.5%</span></td><td><span class="badge-up">+36.5%</span></td></tr><tr><td>25.09</td><td>8.26</td><td>3.74</td><td><strong>12.00</strong></td><td><span class="badge-up">+31.5%</span></td><td><span class="badge-up">+75.5%</span></td><td><span class="badge-up">+42.6%</span></td></tr><tr><td>25.10</td><td>6.95</td><td>3.89</td><td><strong>10.84</strong></td><td><span class="badge-up">+21.4%</span></td><td><span class="badge-up">+81.1%</span></td><td><span class="badge-up">+37.7%</span></td></tr><tr><td>25.11</td><td>7.74</td><td>3.34</td><td><strong>11.08</strong></td><td><span class="badge-up">+27.1%</span></td><td><span class="badge-up">+48.4%</span></td><td><span class="badge-up">+32.8%</span></td></tr><tr><td>25.12</td><td>10.88</td><td>4.27</td><td><strong>15.15</strong></td><td><span class="badge-up">+39.2%</span></td><td><span class="badge-up">+58.3%</span></td><td><span class="badge-up">+44.1%</span></td></tr><tr><td>26.01</td><td>9.41</td><td>4.09</td><td><strong>13.51</strong></td><td><span class="badge-up">+9.7%</span></td><td><span class="badge-up">+39.3%</span></td><td><span class="badge-up">+17.2%</span></td></tr><tr><td>26.02</td><td>6.23</td><td>3.42</td><td><strong>9.65</strong></td><td><span class="badge-dn">-24.0%</span></td><td><span class="badge-dn">-2.4%</span></td><td><span class="badge-dn">-17.5%</span></td></tr><tr><td>26.03</td><td>8.35</td><td>4.36</td><td><strong>12.71</strong></td><td><span class="badge-dn">-26.3%</span></td><td><span class="badge-up">+41.2%</span></td><td><span class="badge-dn">-11.8%</span></td></tr><tr><td>26.04</td><td>5.55</td><td>3.29</td><td><strong>8.85</strong></td><td><span class="badge-dn">-41.3%</span></td><td><span class="badge-up">+31.2%</span></td><td><span class="badge-dn">-26.1%</span></td></tr></tbody>
+    </table></div>
+
+    <div id="s1-3" class="sub-title">1-3. PB / EP 매출 비중 (25.06 ~ 26.04)</div>
+    <div class="chart-row">
+      <div class="chart-wrap"><div class="chart-title">월별 PB · EP 비중 (%)</div><canvas id="chartRatio" height="336" width="776" style="display: block; box-sizing: border-box; height: 336px; width: 776px;"></canvas></div>
+      <div class="tbl-wrap" style="margin-bottom:0"><table>
+        <thead><tr><th>년월</th><th>PB(억)</th><th>PB비중</th><th>EP(억)</th><th>EP비중</th></tr></thead>
+        <tbody id="tbRatio"><tr><td>25.06</td><td>7.87</td><td>76.1%</td><td>2.47</td><td>23.9%</td></tr><tr><td>25.07</td><td>8.60</td><td>79.7%</td><td>2.19</td><td>20.3%</td></tr><tr><td>25.08</td><td>8.24</td><td>72.8%</td><td>3.08</td><td>27.2%</td></tr><tr><td>25.09</td><td>8.26</td><td>68.8%</td><td>3.74</td><td>31.2%</td></tr><tr><td>25.10</td><td>6.95</td><td>64.1%</td><td>3.89</td><td>35.9%</td></tr><tr><td>25.11</td><td>7.74</td><td>69.8%</td><td>3.34</td><td>30.2%</td></tr><tr><td>25.12</td><td>10.88</td><td>71.8%</td><td>4.27</td><td>28.2%</td></tr><tr><td>26.01</td><td>9.41</td><td>69.7%</td><td>4.09</td><td>30.3%</td></tr><tr><td>26.02</td><td>6.23</td><td>64.6%</td><td>3.42</td><td>35.4%</td></tr><tr><td>26.03</td><td>8.35</td><td>65.7%</td><td>4.36</td><td>34.3%</td></tr><tr><td>26.04</td><td>5.55</td><td>62.8%</td><td>3.29</td><td>37.2%</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <div id="s1-4" class="sub-title">1-4. 26년 1~4월 PB 월별 매출 및 YoY</div>
+    <div class="chart-row">
+      <div class="chart-wrap"><div class="chart-title">26년 vs 25년 PB 매출 비교 (억원)</div><canvas id="chartPB26" height="414" width="776" style="display: block; box-sizing: border-box; height: 414px; width: 776px;"></canvas></div>
+      <div class="tbl-wrap" style="margin-bottom:0">
+        <table>
+          <thead><tr><th>년월</th><th>26년(억)</th><th>25년(억)</th><th>YoY</th></tr></thead>
+          <tbody>
+            <tr><td>2026.01</td><td>9.42</td><td>8.58</td><td><span class="badge-up">+9.7%</span></td></tr>
+            <tr><td>2026.02</td><td>6.23</td><td>8.20</td><td><span class="badge-dn">-24.0%</span></td></tr>
+            <tr><td>2026.03</td><td>8.35</td><td>11.32</td><td><span class="badge-dn">-26.3%</span></td></tr>
+            <tr><td>2026.04</td><td>5.55</td><td>9.47</td><td><span class="badge-dn">-41.3%</span></td></tr>
+            <tr class="total-row"><td>합계 (1~4월)</td><td>29.55</td><td>37.57</td><td><span class="badge-dn">-21.3%</span></td></tr>
+          </tbody>
+        </table>
+        <div class="insight warn-insight" style="margin-top:14px;margin-bottom:0">
+          <strong>1월 제외 전월 역성장</strong> — 2~4월 연속 하락, 특히 4월 PB -41.3% 급락. 25년 상반기 고성장(25.06~25.12 평균 +42% YoY)에 따른 높은 기저 영향 및 채널 경쟁력 재점검 필요.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="sec-title"><span class="badge">2</span> 카테고리별 현황</div>
+    <div id="s2-2" class="sub-title">2-1. PB 카테고리별 매출 및 YoY (26년 1~4월)</div>
+    <div class="chart-row">
+      <div class="chart-wrap"><div class="chart-title">카테고리별 26 vs 25 매출 비교 (억원, 1~4월)</div><canvas id="chartCatYoY" height="414" width="776" style="display: block; box-sizing: border-box; height: 414px; width: 776px;"></canvas></div>
+      <div class="chart-wrap">
+        <div class="chart-title">카테고리 비중 비교 — 25년 vs 26년 (1~4월)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+          <div><div style="text-align:center;font-size:11px;font-weight:600;color:#94a3b8;margin-bottom:3px">2025년</div><canvas id="chartCatShare25" height="385" width="385" style="display: block; box-sizing: border-box; height: 385px; width: 385px;"></canvas></div>
+          <div><div style="text-align:center;font-size:11px;font-weight:600;color:#374151;margin-bottom:3px">2026년</div><canvas id="chartCatShare" height="385" width="385" style="display: block; box-sizing: border-box; height: 385px; width: 385px;"></canvas></div>
+        </div>
+        <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:8px"><span style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#374151"></span>수납</span><span style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#4b5563"></span>거실</span><span style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#6b7280"></span>침실</span><span style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#9ca3af"></span>키즈</span><span style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#dc2626"></span>주방</span><span style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#1f2937"></span>서재</span>        </div>
+      </div>
+    </div>
+    <div class="chart-wrap"><div class="chart-title">카테고리별 YoY (%, 1~4월 기준)</div><canvas id="chartCatYoYBar" height="375" width="1609" style="display: block; box-sizing: border-box; height: 375px; width: 1609px;"></canvas></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>카테고리</th><th>26년(억)</th><th>26년 비중</th><th>25년(억)</th><th>25년 비중</th><th>비중 변화</th><th>차액(억)</th><th>YoY</th></tr></thead>
+      <tbody><tr><td><span class="cat cat-수납">수납</span></td><td>10.16</td><td>34.4%</td><td>11.77</td><td>31.3%</td><td><span class="badge-up">+3.1%p</span></td><td><span class="badge-dn">-1.61</span></td><td><span class="badge-dn">-13.7%</span></td></tr><tr><td><span class="cat cat-거실">거실</span></td><td>5.40</td><td>18.3%</td><td>6.41</td><td>17.1%</td><td><span class="badge-up">+1.2%p</span></td><td><span class="badge-dn">-1.01</span></td><td><span class="badge-dn">-15.8%</span></td></tr><tr><td><span class="cat cat-침실">침실</span></td><td>5.33</td><td>18.0%</td><td>5.31</td><td>14.1%</td><td><span class="badge-up">+3.9%p</span></td><td><span class="badge-up">+0.02</span></td><td><span class="badge-up">+0.4%</span></td></tr><tr><td><span class="cat cat-키즈">키즈</span></td><td>4.06</td><td>13.7%</td><td>5.27</td><td>14.0%</td><td><span class="badge-dn">-0.3%p</span></td><td><span class="badge-dn">-1.21</span></td><td><span class="badge-dn">-22.9%</span></td></tr><tr><td><span class="cat cat-주방">주방</span></td><td>2.69</td><td>9.1%</td><td>5.54</td><td>14.7%</td><td><span class="badge-dn">-5.6%p</span></td><td><span class="badge-dn">-2.85</span></td><td><span class="badge-dn">-51.5%</span></td></tr><tr><td><span class="cat cat-서재">서재</span></td><td>1.92</td><td>6.5%</td><td>3.28</td><td>8.7%</td><td><span class="badge-dn">-2.2%p</span></td><td><span class="badge-dn">-1.36</span></td><td><span class="badge-dn">-41.4%</span></td></tr>        <tr class="total-row"><td>합계</td><td>29.55</td><td>100%</td><td>37.57</td><td>100%</td><td>—</td><td><span class="badge-dn">-8.02</span></td><td><span class="badge-dn">-21.3%</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="insight warn-insight" style="margin-top:14px">
+      <strong>침실 제외 전 카테고리 하락</strong> — 침실 <strong>+0.4%</strong>로 유일 성장. 주방 <strong>-51.5%</strong>·서재 <strong>-41.4%</strong>·키즈 <strong>-22.9%</strong> 급락. 수납(최대 카테고리, 34.4%) -13.7%로 전체 하락 주도. 25년 고성장 기저 효과와 채널 내 경쟁 심화가 복합 작용.
+    </div>
+  </section>
+
+  <section id="s3">
+    <div class="sec-title"><span class="badge">3</span> 상세 카테고리별 현황 <small style="font-size:11px;font-weight:400;color:#64748b;margin-left:8px">26년 1~4월 누적 기준 / 전년 동기 대비</small></div>
+    <div class="tabs" id="catTabs"><button class="tab-btn active" onclick="showTab(&#39;수납&#39;)">🗄 수납 <small>10.16억</small></button><button class="tab-btn " onclick="showTab(&#39;거실&#39;)">🛋 거실 <small>5.40억</small></button><button class="tab-btn " onclick="showTab(&#39;침실&#39;)">🛏 침실 <small>5.33억</small></button><button class="tab-btn " onclick="showTab(&#39;키즈&#39;)">🧒 키즈 <small>4.06억</small></button><button class="tab-btn " onclick="showTab(&#39;주방&#39;)">🍽 주방 <small>2.69억</small></button><button class="tab-btn " onclick="showTab(&#39;서재&#39;)">📚 서재 <small>1.92억</small></button></div><div class="tab-content active" id="tab-수납"><div class="insight warn-insight"><strong>수납 YoY -13.7%</strong> (25년 11.77억 → 26년 10.16억) — 최대 카테고리이나 주요 스테디셀러(샘베딩 드레스룸·W옷장) 전반 하락. 스카이라이브 신규 진입이 유일 성장 요인</div><div class="tbl-wrap"><table><thead><tr><th>순위</th><th>품목 상세</th><th>시리즈</th><th style="text-align:left">상품명</th><th>26년(억)</th><th>비중</th><th>25년(억)</th><th>YoY</th></tr></thead><tbody><tr><td><span class="rank rank1">1</span></td><td>침실도어</td><td>베이직</td><td style="text-align:left">샘베딩 화이트 6단 도어 400(H1934)_전체_3</td><td>1.30</td><td>12.8%</td><td>0.43</td><td><span class="badge-up">+202.6%</span></td></tr><tr><td><span class="rank rank2">2</span></td><td>드레스룸몸통</td><td>샘베딩194 C/C</td><td style="text-align:left">샘베딩 W드레스룸 짧은장 A 800(D600)_7</td><td>1.06</td><td>10.5%</td><td>0.63</td><td><span class="badge-up">+68.0%</span></td></tr><tr><td><span class="rank rank3">3</span></td><td>드레스룸몸통</td><td>샘베딩194 C/C</td><td style="text-align:left">샘베딩 W드레스룸 긴장 B 800(D600)_7</td><td>0.55</td><td>5.4%</td><td>0.25</td><td><span class="badge-up">+120.9%</span></td></tr><tr><td><span class="rank ">4</span></td><td>침실수납장</td><td>베이직</td><td style="text-align:left">샘베딩 W옷장 긴장A 800_3단서랍_8</td><td>0.44</td><td>4.4%</td><td>0.43</td><td><span class="badge-up">+4.0%</span></td></tr><tr><td><span class="rank ">5</span></td><td>침실수납장</td><td>스테디</td><td style="text-align:left">스테디SB 7000 W옷장 3단서랍A 800_W_5</td><td>0.32</td><td>3.1%</td><td>0.54</td><td><span class="badge-dn">-40.7%</span></td></tr><tr><td><span class="rank ">6</span></td><td>드레스룸몸통</td><td>바이엘 채널</td><td style="text-align:left">바이엘 6000 노출서랍장 화이트 1000_3단서랍_W 6000</td><td>0.26</td><td>2.5%</td><td>0.22</td><td><span class="badge-up">+19.2%</span></td></tr><tr><td><span class="rank ">7</span></td><td>침실도어</td><td>스테디</td><td style="text-align:left">스테디SB 7000 화이트 도어 400_화이트,전체_2</td><td>0.26</td><td>2.5%</td><td>0.44</td><td><span class="badge-dn">-41.1%</span></td></tr><tr><td><span class="rank ">8</span></td><td>드레스룸몸통</td><td>키큰옷장 C/C</td><td style="text-align:left">W 6000 드레스룸 1000(D600)_짧은장_3</td><td>0.22</td><td>2.2%</td><td>0.25</td><td><span class="badge-dn">-11.9%</span></td></tr><tr><td><span class="rank ">9</span></td><td>침실도어</td><td>바이엘 채널</td><td style="text-align:left">바이엘 6000 화이트 채널도어 1000(B)_외문형_전체</td><td>0.18</td><td>1.8%</td><td>0.25</td><td><span class="badge-dn">-28.5%</span></td></tr><tr><td><span class="rank ">10</span></td><td>침실서랍장</td><td>5단 서랍장</td><td style="text-align:left">스테디SB 7000 W 5단서랍장 800_2</td><td>0.17</td><td>1.7%</td><td>0.21</td><td><span class="badge-dn">-19.6%</span></td></tr></tbody></table></div></div><div class="tab-content " id="tab-거실"><div class="insight warn-insight"><strong>거실 YoY -15.8%</strong> (25년 6.41억 → 26년 5.40억) — 스카이라이브 TV장 +202.6% 강세 속, 소파 전반 판매 감소로 카테고리 하락</div><div class="tbl-wrap"><table><thead><tr><th>순위</th><th>품목 상세</th><th>시리즈</th><th style="text-align:left">상품명</th><th>26년(억)</th><th>비중</th><th>25년(억)</th><th>YoY</th></tr></thead><tbody><tr><td><span class="rank rank1">1</span></td><td>거실거실장</td><td>아카이브</td><td style="text-align:left">아카이브 5000 화이트 거실장 2000</td><td>0.32</td><td>5.9%</td><td>0.28</td><td><span class="badge-up">+10.9%</span></td></tr><tr><td><span class="rank rank2">2</span></td><td>거실리클라이너</td><td>프라임노블_홈바형</td><td style="text-align:left">프라임 노블 3000 페더화이트 리클라이너 4인_홈바형_3</td><td>0.29</td><td>5.4%</td><td>0.09</td><td><span class="badge-up">+239.6%</span></td></tr><tr><td><span class="rank rank3">3</span></td><td>거실소파</td><td>모아</td><td style="text-align:left">모아 5000 오트밀 3.5인용_A_2</td><td>0.28</td><td>5.1%</td><td>0.28</td><td><span class="badge-dn">-0.9%</span></td></tr><tr><td><span class="rank ">4</span></td><td>거실리클라이너</td><td>프라임노블</td><td style="text-align:left">프라임 노블 3000 페더화이트 리클라이너 4인_3</td><td>0.20</td><td>3.8%</td><td>0.18</td><td><span class="badge-up">+12.9%</span></td></tr><tr><td><span class="rank ">5</span></td><td>거실거실장</td><td>플리츠</td><td style="text-align:left">플리츠 거실장 오트밀 AV장 2100</td><td>0.19</td><td>3.5%</td><td>0.09</td><td><span class="badge-up">+104.8%</span></td></tr><tr><td><span class="rank ">6</span></td><td>거실거실장</td><td>아카이브</td><td style="text-align:left">아카이브 5000 화이트 멀티수납장 1600_높은선반형</td><td>0.18</td><td>3.3%</td><td>0.24</td><td><span class="badge-dn">-24.6%</span></td></tr><tr><td><span class="rank ">7</span></td><td>거실소파</td><td>브리오</td><td style="text-align:left">브리오 3000 라이트그레이 3.5인용_2</td><td>0.18</td><td>3.3%</td><td>0.09</td><td><span class="badge-up">+104.5%</span></td></tr><tr><td><span class="rank ">8</span></td><td>거실리클라이너</td><td>트라움라토</td><td style="text-align:left">트라움 라토 3000 카멜 리클라이너 1인</td><td>0.17</td><td>3.2%</td><td>0.13</td><td><span class="badge-up">+30.0%</span></td></tr><tr><td><span class="rank ">9</span></td><td>거실소파</td><td>모아</td><td style="text-align:left">모아 5000 오트밀 라운지형_D</td><td>0.17</td><td>3.2%</td><td>0.14</td><td><span class="badge-up">+23.7%</span></td></tr><tr><td><span class="rank ">10</span></td><td>거실소파</td><td>노르딕</td><td style="text-align:left">밀란 304 노르딕 소파 코튼베이지 3.5인용</td><td>0.17</td><td>3.2%</td><td>0.03</td><td><span class="badge-up">+438.1%</span></td></tr></tbody></table></div></div><div class="tab-content " id="tab-침실"><div class="insight good-insight"><strong>침실 YoY +0.4%</strong> (25년 5.31억 → 26년 5.33억) — 전 카테고리 중 유일 성장. 노뜨 라텍스탑 +40.6%, 침대 신규 시리즈(모노·클라썸) 진입이 기존 하락 상쇄</div><div class="tbl-wrap"><table><thead><tr><th>순위</th><th>품목 상세</th><th>시리즈</th><th style="text-align:left">상품명</th><th>26년(억)</th><th>비중</th><th>25년(억)</th><th>YoY</th></tr></thead><tbody><tr><td><span class="rank rank1">1</span></td><td>침실매트리스</td><td>노뜨 컴포트</td><td style="text-align:left">노뜨 컴포트 매트 포켓스프링 SS_3</td><td>0.49</td><td>9.2%</td><td>0.54</td><td><span class="badge-dn">-8.8%</span></td></tr><tr><td><span class="rank rank2">2</span></td><td>침실매트리스</td><td>노뜨 베이직</td><td style="text-align:left">노뜨 베이직 매트리스 SS</td><td>0.30</td><td>5.6%</td><td>0.21</td><td><span class="badge-up">+40.6%</span></td></tr><tr><td><span class="rank rank3">3</span></td><td>침실침대</td><td>아임빅 기본헤드</td><td style="text-align:left">뉴아임2 7000 화이트 수납침대 SS_일반헤드_5</td><td>0.20</td><td>3.8%</td><td>0.25</td><td><span class="badge-dn">-18.0%</span></td></tr><tr><td><span class="rank ">4</span></td><td>침실매트리스</td><td>노뜨 컴포트</td><td style="text-align:left">노뜨 컴포트 매트 포켓스프링 Q_3</td><td>0.19</td><td>3.6%</td><td>0.17</td><td><span class="badge-up">+15.2%</span></td></tr><tr><td><span class="rank ">5</span></td><td>침실매트리스</td><td>노뜨 라텍스탑</td><td style="text-align:left">노뜨 라텍스탑 매트 포켓스프링 Q</td><td>0.17</td><td>3.2%</td><td>0.09</td><td><span class="badge-up">+81.8%</span></td></tr><tr><td><span class="rank ">6</span></td><td>침실매트리스</td><td>노뜨 라텍스탑</td><td style="text-align:left">노뜨 라텍스탑 매트 포켓스프링 K</td><td>0.16</td><td>3.0%</td><td>0.13</td><td><span class="badge-up">+23.7%</span></td></tr><tr><td><span class="rank ">7</span></td><td>침실침대</td><td>포엠</td><td style="text-align:left">포엠 7000 내추럴오크 침대 Q/K_일반형,패널</td><td>0.14</td><td>2.7%</td><td>0.15</td><td><span class="badge-dn">-2.7%</span></td></tr><tr><td><span class="rank ">8</span></td><td>침실침대</td><td>포엠</td><td style="text-align:left">포엠 7000 코튼그레이 침대 Q/K_일반형,패널</td><td>0.14</td><td>2.6%</td><td>0.09</td><td><span class="badge-up">+56.8%</span></td></tr><tr><td><span class="rank ">9</span></td><td>침실침대</td><td>아임빅 조명헤드</td><td style="text-align:left">뉴아임2 7000 화이트 수납침대 SS_조명헤드_2</td><td>0.14</td><td>2.6%</td><td>0.30</td><td><span class="badge-dn">-52.9%</span></td></tr><tr><td><span class="rank ">10</span></td><td>침실침대</td><td>샘베딩 클로즈</td><td style="text-align:left">클로즈 7000 코튼그레이 침대 Q/K_일반</td><td>0.12</td><td>2.3%</td><td>0.04</td><td><span class="badge-up">+201.2%</span></td></tr></tbody></table></div></div><div class="tab-content " id="tab-키즈"><div class="insight warn-insight"><strong>키즈 YoY -22.9%</strong> (25년 5.27억 → 26년 4.06억) — 샘키즈 7000 신규 3종 진입에도 기존 구형 라인 전반 부진으로 전체 하락</div><div class="tbl-wrap"><table><thead><tr><th>순위</th><th>품목 상세</th><th>시리즈</th><th style="text-align:left">상품명</th><th>26년(억)</th><th>비중</th><th>25년(억)</th><th>YoY</th></tr></thead><tbody><tr><td><span class="rank rank1">1</span></td><td>침실매트리스</td><td>매트리스</td><td style="text-align:left">샘키즈 매트리스 SS_3</td><td>0.33</td><td>8.1%</td><td>0.00</td><td><span class="new-badge">신규</span></td></tr><tr><td><span class="rank rank2">2</span></td><td>자녀방침대</td><td>데이베드</td><td style="text-align:left">샘키즈 7000 화이트 침대 데이베드 SS_안전가드(W1400)_5</td><td>0.27</td><td>6.6%</td><td>0.00</td><td><span class="new-badge">신규</span></td></tr><tr><td><span class="rank rank3">3</span></td><td>자녀방수납장</td><td>1305</td><td style="text-align:left">샘키즈 7000 화이트 수납장 1305_브라운/오트밀/그레이</td><td>0.24</td><td>6.0%</td><td>0.00</td><td><span class="new-badge">신규</span></td></tr><tr><td><span class="rank ">4</span></td><td>자녀방수납장</td><td>1305</td><td style="text-align:left">샘키즈2 7000 화이트 수납장 1305_화이트/라이트베이지</td><td>0.20</td><td>4.8%</td><td>0.25</td><td><span class="badge-dn">-22.9%</span></td></tr><tr><td><span class="rank ">5</span></td><td>자녀방침대</td><td>하이가드</td><td style="text-align:left">샘키즈 7000 화이트 하이가드 데이베드SS_4면형_2</td><td>0.13</td><td>3.2%</td><td>0.00</td><td><span class="new-badge">신규</span></td></tr><tr><td><span class="rank ">6</span></td><td>자녀방책장</td><td>책장</td><td style="text-align:left">샘키즈2 7000 화이트 책장 1305</td><td>0.12</td><td>2.9%</td><td>0.10</td><td><span class="badge-up">+17.8%</span></td></tr><tr><td><span class="rank ">7</span></td><td>자녀방옷장</td><td>키큰옷장</td><td style="text-align:left">샘키즈 7000 화이트 키큰옷장 1600 서랍1단행거,일반2단행거_베이지</td><td>0.11</td><td>2.7%</td><td>0.02</td><td><span class="badge-up">+533.1%</span></td></tr><tr><td><span class="rank ">8</span></td><td>자녀방옷장</td><td>키큰옷장</td><td style="text-align:left">샘키즈 7000 화이트 키큰옷장 서랍형 800_1단행거_베이지</td><td>0.09</td><td>2.3%</td><td>0.00</td><td><span class="new-badge">신규</span></td></tr><tr><td><span class="rank ">9</span></td><td>자녀방수납장</td><td>1305</td><td style="text-align:left">샘키즈 7000 화이트 수납장 1305_화이트/크림오트밀</td><td>0.09</td><td>2.1%</td><td>0.00</td><td><span class="new-badge">신규</span></td></tr><tr><td><span class="rank ">10</span></td><td>자녀방침대</td><td>데이베드</td><td style="text-align:left">샘키즈 7000 라이트메이플 침대 데이베드 SS_안전가드(W1400)_5</td><td>0.08</td><td>1.9%</td><td>0.00</td><td><span class="new-badge">신규</span></td></tr></tbody></table></div></div><div class="tab-content " id="tab-주방"><div class="insight warn-insight"><strong>주방 YoY -51.5%</strong> (25년 5.54억 → 26년 2.69억) — 전 카테고리 최대 낙폭. 이나 7000 주방수납장 -84.8% 폭락이 핵심 원인</div><div class="tbl-wrap"><table><thead><tr><th>순위</th><th>품목 상세</th><th>시리즈</th><th style="text-align:left">상품명</th><th>26년(억)</th><th>비중</th><th>25년(억)</th><th>YoY</th></tr></thead><tbody><tr><td><span class="rank rank1">1</span></td><td>주방식탁의자</td><td>미나 의자</td><td style="text-align:left">미나 7000 라운드 식탁의자_코튼화이트_1개입_2</td><td>0.22</td><td>8.1%</td><td>1.42</td><td><span class="badge-dn">-84.8%</span></td></tr><tr><td><span class="rank rank2">2</span></td><td>주방식탁</td><td>위드세라믹</td><td style="text-align:left">위드 7000 코튼화이트 식탁 1400_화이트마블</td><td>0.17</td><td>6.4%</td><td>0.05</td><td><span class="badge-up">+225.5%</span></td></tr><tr><td><span class="rank rank3">3</span></td><td>주방식탁의자</td><td>위드 라운드 의자</td><td style="text-align:left">위드 7000 라운드 식탁의자_부클아이보리_2개입_2</td><td>0.14</td><td>5.4%</td><td>0.00</td><td><span class="new-badge">신규</span></td></tr><tr><td><span class="rank ">4</span></td><td>주방식탁</td><td>미나</td><td style="text-align:left">미나 7000 코튼화이트 원형 식탁 1000_2</td><td>0.12</td><td>4.4%</td><td>0.47</td><td><span class="badge-dn">-74.9%</span></td></tr><tr><td><span class="rank ">5</span></td><td>주방식탁</td><td>컴포트</td><td style="text-align:left">컴포트 6000 리빙다이닝 4인 식탁 1200_베이지_2</td><td>0.12</td><td>4.3%</td><td>0.10</td><td><span class="badge-up">+13.1%</span></td></tr><tr><td><span class="rank ">6</span></td><td>주방식탁의자</td><td>컴포트 의자</td><td style="text-align:left">컴포트 6000 리빙다이닝 벤치형의자 1100_오트밀_2</td><td>0.10</td><td>3.9%</td><td>0.06</td><td><span class="badge-up">+69.2%</span></td></tr><tr><td><span class="rank ">7</span></td><td>주방식탁의자</td><td>컴포트 의자</td><td style="text-align:left">컴포트 6000 리빙다이닝 식탁의자_2개입_스퀘어_2</td><td>0.10</td><td>3.8%</td><td>0.12</td><td><span class="badge-dn">-17.6%</span></td></tr><tr><td><span class="rank ">8</span></td><td>주방식탁</td><td>컴포트</td><td style="text-align:left">컴포트 6000 리빙다이닝 4인 식탁 1200_화이트_2</td><td>0.10</td><td>3.6%</td><td>0.08</td><td><span class="badge-up">+15.1%</span></td></tr><tr><td><span class="rank ">9</span></td><td>주방식탁의자</td><td>컴포트 의자</td><td style="text-align:left">컴포트 6000 리빙다이닝 벤치형의자 코너형_오트밀_2</td><td>0.10</td><td>3.6%</td><td>0.16</td><td><span class="badge-dn">-40.7%</span></td></tr><tr><td><span class="rank ">10</span></td><td>주방식탁의자</td><td>위드 라운드 의자</td><td style="text-align:left">위드 7000 라운드 식탁의자_코튼화이트_2개입_2</td><td>0.10</td><td>3.6%</td><td>0.00</td><td><span class="new-badge">신규</span></td></tr></tbody></table></div></div><div class="tab-content " id="tab-서재"><div class="insight warn-insight"><strong>서재 YoY -41.4%</strong> (25년 3.28억 → 26년 1.92억) — 샘D 7000 책장 양대 모델(-51.2%, -49.4%) 급락. 신규 성장 상품 부재</div><div class="tbl-wrap"><table><thead><tr><th>순위</th><th>품목 상세</th><th>시리즈</th><th style="text-align:left">상품명</th><th>26년(억)</th><th>비중</th><th>25년(억)</th><th>YoY</th></tr></thead><tbody><tr><td><span class="rank rank1">1</span></td><td>서재책장</td><td>샘책장</td><td style="text-align:left">샘D 7000 퓨어화이트 5단책장 1200</td><td>0.17</td><td>8.7%</td><td>0.34</td><td><span class="badge-dn">-51.2%</span></td></tr><tr><td><span class="rank rank2">2</span></td><td>서재책장</td><td>플롯</td><td style="text-align:left">플롯 6000 화이트 5단 단독책장 800_2단 수납장</td><td>0.12</td><td>6.2%</td><td>0.11</td><td><span class="badge-up">+10.5%</span></td></tr><tr><td><span class="rank rank3">3</span></td><td>서재책장</td><td>샘책장</td><td style="text-align:left">샘D 7000 화이트 5단책장 1200</td><td>0.09</td><td>4.5%</td><td>0.17</td><td><span class="badge-dn">-49.4%</span></td></tr><tr><td><span class="rank ">4</span></td><td>서재책장</td><td>플롯</td><td style="text-align:left">플롯 6000 화이트 5단 연결책장 600_3단 서랍장</td><td>0.06</td><td>3.0%</td><td>0.07</td><td><span class="badge-dn">-19.4%</span></td></tr><tr><td><span class="rank ">5</span></td><td>서재책장</td><td>샘책장</td><td style="text-align:left">샘D 7000 퓨어화이트 5단책장 800</td><td>0.05</td><td>2.5%</td><td>0.09</td><td><span class="badge-dn">-45.1%</span></td></tr><tr><td><span class="rank ">6</span></td><td>서재책장</td><td>샘책장</td><td style="text-align:left">샘D 7000 라이트메이플 5단책장 1200</td><td>0.05</td><td>2.4%</td><td>0.08</td><td><span class="badge-dn">-41.6%</span></td></tr><tr><td><span class="rank ">7</span></td><td>자녀방책상</td><td>티오</td><td style="text-align:left">티오2 6000 퓨어W 라운드 책상 1200 D600</td><td>0.05</td><td>2.3%</td><td>0.07</td><td><span class="badge-dn">-39.1%</span></td></tr><tr><td><span class="rank ">8</span></td><td>서재ACC</td><td>샘책장</td><td style="text-align:left">샘 7000 2단도어 400 코튼그레이_힌지_3개세트</td><td>0.04</td><td>2.0%</td><td>0.08</td><td><span class="badge-dn">-52.5%</span></td></tr><tr><td><span class="rank ">9</span></td><td>서재책장</td><td>샘책장</td><td style="text-align:left">샘D 7000 화이트 5단책장 800</td><td>0.03</td><td>1.7%</td><td>0.05</td><td><span class="badge-dn">-35.4%</span></td></tr><tr><td><span class="rank ">10</span></td><td>서재ACC</td><td>샘책장</td><td style="text-align:left">샘 7000 2단도어 400 코튼그레이_힌지_2개입</td><td>0.03</td><td>1.5%</td><td>0.04</td><td><span class="badge-dn">-32.3%</span></td></tr></tbody></table></div></div>  </section>
+
+  <section id="s4">
+    <div class="sec-title"><span class="badge" style="background:#6b7280;color:#fff">4</span> 주방 카테고리 하락 원인 분석 <small style="font-size:11px;font-weight:400;color:#64748b;margin-left:8px">기준: 26년 1~4월 vs 25년 1~4월</small></div>
+    <div class="insight warn-insight critical-insight"><strong>핵심 진단</strong> — 주방 <strong>-51.5%</strong> (5.54억→2.69억), 전 카테고리 최대 낙폭. 25년 이나 7000 주방수납장 1.42억이 26년 0.22억으로 <strong>-84.8% 폭락</strong>이 핵심 원인. 전체 하락분의 절반 이상 차지.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px"><div><div class="sub-title" style="margin-top:0;color:#6b7280">▼ 하락 주요 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>주방식탁</td><td>미나</td><td style="text-align:left">미나 7000 코튼화이트 원형 식탁 1000_2</td><td>0.47</td><td>0.12</td><td><span class="badge-dn">-74.9%</span></td></tr><tr><td>주방식탁의자</td><td>미나 의자</td><td style="text-align:left">미나 7000 라운드 식탁의자_코튼화이트_1개입_2</td><td>1.42</td><td>0.22</td><td><span class="badge-dn">-84.8%</span></td></tr><tr><td>주방식탁의자</td><td>컴포트 의자</td><td style="text-align:left">컴포트 6000 리빙다이닝 식탁의자_2개입_스퀘어_2</td><td>0.12</td><td>0.10</td><td><span class="badge-dn">-17.6%</span></td></tr></tbody></table></div></div><div><div class="sub-title" style="margin-top:0">▲ 성장 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>주방식탁</td><td>위드세라믹</td><td style="text-align:left">위드 7000 코튼화이트 식탁 1400_화이트마블</td><td>0.05</td><td>0.17</td><td><span class="badge-up">+225.5%</span></td></tr><tr><td>주방식탁</td><td>컴포트</td><td style="text-align:left">컴포트 6000 리빙다이닝 4인 식탁 1200_화이트_2</td><td>0.08</td><td>0.10</td><td><span class="badge-up">+15.1%</span></td></tr><tr><td>주방식탁</td><td>컴포트</td><td style="text-align:left">컴포트 6000 리빙다이닝 4인 식탁 1200_베이지_2</td><td>0.10</td><td>0.12</td><td><span class="badge-up">+13.1%</span></td></tr><tr><td>주방식탁의자</td><td>컴포트 의자</td><td style="text-align:left">컴포트 6000 리빙다이닝 벤치형의자 1100_오트밀_2</td><td>0.06</td><td>0.10</td><td><span class="badge-up">+69.2%</span></td></tr><tr><td>주방식탁의자</td><td>위드 라운드 의자</td><td style="text-align:left">위드 7000 라운드 식탁의자_부클아이보리_2개입_2</td><td>0.00</td><td>0.14</td><td><span class="new-badge">신규</span></td></tr></tbody></table></div></div></div>    <div class="ana-grid" style="margin-top:14px">
+      <div class="insight warn-insight critical-insight"><strong>① 미나 7000 수납장 기저 효과 + 구조적 하락</strong><br>25년 미나 7000 수납장 1.42억이 26년 0.22억(-84.8%). 25년 오집 기획전·프로모션 소멸 기저 효과 가능성. 또는 단종·재고 소진 여부 확인 필요. 이 단일 상품이 전체 주방 하락의 절반 이상을 차지.</div>
+      <div class="insight warn-insight"><strong>② 신규 트렌드 라인 오집 부재</strong><br>네이버 주방은 리브업 신규 3종 + 위드세라믹 +225.5% 고성장. 오집에는 위드세라믹 소폭 성장(3위) 외 신규 트렌드 라인 없음. 오집 인테리어 고객 수요에 맞는 세라믹·모션 테이블 라인 부재.</div>
+    </div>
+    <div id="s4-strategy" class="sub-title">향후 운영 전략 제안</div>
+    <div class="strategy-grid">
+      <div class="strategy-card" style="border-top-color:#6b7280"><h4>① 미나 7000 하락 원인 파악 최우선</h4><p>재고 소진 여부, 가격 경쟁력, 노출 변화, 단종 계획 점검. 원인에 따라 SKU 리뉴얼·가격 조정 또는 후속 모델 기획. 전체 주방 하락의 핵심 변수</p></div>
+      <div class="strategy-card" style="border-top-color:#374151"><h4>② 위드세라믹 식탁 집중 육성</h4><p>위드 7000 세라믹 식탁 +225.5% 성장 확인. 오집 세라믹 수요 검증 완료. 색상·사이즈 SKU 다변화 및 의자 번들 기획. 세라믹 식탁+의자 풀세트 기획전 운영</p></div>
+      <div class="strategy-card" style="border-top-color:#374151"><h4>③ 리브업·모션테이블 오집 론칭</h4><p>네이버 검증 리브업 모션테이블(신규 신제품) 오집 우선 론칭. 오집 인테리어 트렌드(모션 테이블, 높이 조절) 수요 선점. 라이프스타일 영상 콘텐츠로 프리미엄 포지셔닝</p></div>
+    </div>
+  </section>
+
+  <section id="s5">
+    <div class="sec-title"><span class="badge" style="background:#6b7280">5</span> 서재 카테고리 하락 원인 분석 <small style="font-size:11px;font-weight:400;color:#64748b;margin-left:8px">기준: 26년 1~4월 vs 25년 1~4월</small></div>
+    <div class="insight warn-insight critical-insight"><strong>서재 YoY -41.4%</strong> (3.28억 → 1.92억) — 오집 서재 1·2위 샘D 7000 책장(퓨어화이트 -51.2%, 화이트 -49.4%) 급락. 네이버에서 동일 상품 +10% 성장과 대조적 — 채널 특이적 원인 분석 필요.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px"><div><div class="sub-title" style="margin-top:0;color:#6b7280">▼ 하락 주요 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>서재ACC</td><td>샘책장</td><td style="text-align:left">샘 7000 2단도어 400 코튼그레이_힌지_3개세트</td><td>0.08</td><td>0.04</td><td><span class="badge-dn">-52.5%</span></td></tr><tr><td>서재책장</td><td>샘책장</td><td style="text-align:left">샘D 7000 퓨어화이트 5단책장 1200</td><td>0.34</td><td>0.17</td><td><span class="badge-dn">-51.2%</span></td></tr><tr><td>서재책장</td><td>샘책장</td><td style="text-align:left">샘D 7000 화이트 5단책장 1200</td><td>0.17</td><td>0.09</td><td><span class="badge-dn">-49.4%</span></td></tr><tr><td>서재책장</td><td>샘책장</td><td style="text-align:left">샘D 7000 퓨어화이트 5단책장 800</td><td>0.09</td><td>0.05</td><td><span class="badge-dn">-45.1%</span></td></tr><tr><td>서재책장</td><td>샘책장</td><td style="text-align:left">샘D 7000 라이트메이플 5단책장 1200</td><td>0.08</td><td>0.05</td><td><span class="badge-dn">-41.6%</span></td></tr></tbody></table></div></div><div><div class="sub-title" style="margin-top:0">▲ 성장 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>서재책장</td><td>플롯</td><td style="text-align:left">플롯 6000 화이트 5단 단독책장 800_2단 수납장</td><td>0.11</td><td>0.12</td><td><span class="badge-up">+10.5%</span></td></tr></tbody></table></div></div></div>    <div class="ana-grid" style="margin-top:14px">
+      <div class="insight warn-insight critical-insight"><strong>① 샘D 7000 책장 오집 채널 이탈</strong><br>동일 상품이 네이버에서 +10%대 성장인데 오집에서 -50% 급락. 오집 내 검색 노출 순위 하락, 경쟁 책장 증가, 가격 경쟁력 약화 등 채널 특이 요인 집중 점검 필요.</div>
+      <div class="insight warn-insight"><strong>② 티오2 책상 오집 미전환</strong><br>네이버 티오2 책상 +103~310% 폭증 vs 오집 -39.1% 하락. 오집 서재 고객 특성(책장 중심 구매)과 네이버 고객 특성(책상 세트 구매) 차이 분석 필요. 오집 맞춤 서재 콘텐츠 전략 재수립.</div>
+    </div>
+    <div id="s5-strategy" class="sub-title">향후 운영 전략 제안</div>
+    <div class="strategy-grid">
+      <div class="strategy-card" style="border-top-color:#6b7280"><h4>① 샘D 7000 책장 오집 이탈 원인 분석</h4><p>오집 내 노출 순위·키워드·가격 경쟁력 점검. 네이버 대비 오집 가격·할인 조건 비교. 오집 고객 리뷰 분석으로 이탈 원인 특정 후 콘텐츠 리뉴얼 또는 가격 정책 수정</p></div>
+      <div class="strategy-card" style="border-top-color:#374151"><h4>② 플레임 6000 책장 신규 라인 육성</h4><p>플레임 6000 화이트 책장(+10.5% 선방) 기반 색상·폭 SKU 확대. 오집 인테리어 감성에 맞는 책장 스타일링 이미지 강화. 책장+책상+조명 토탈 서재 솔루션 패키지 제안</p></div>
+      <div class="strategy-card" style="border-top-color:#374151"><h4>③ 서재 콘텐츠 오집 맞춤 재정비</h4><p>오집 고객 서재 구매 패턴(책장 중심 vs 책상 중심) 재분석. 오집 특성에 맞는 서재 스타일링 가이드(홈오피스, 1인 서재, 아이 공부방) 콘텐츠 다양화로 유입 확대</p></div>
+    </div>
+  </section>
+
+  <section id="s6">
+    <div class="sec-title"><span class="badge" style="background:#4b5563">6</span> 거실 카테고리 현황 및 전략 <small style="font-size:11px;font-weight:400;color:#64748b;margin-left:8px">기준: 26년 1~4월 vs 25년 1~4월</small></div>
+    <div class="insight warn-insight"><strong>거실 YoY -15.8%</strong> (6.41억 → 5.40억) — 스카이라이브 TV장 +202.6%(1.30억, 1위) 강세 속, 소파 전반 판매 감소로 카테고리 하락. 프라임노블 홈바형 +239.6% 등 일부 성장 소파 혼재.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px"><div><div class="sub-title" style="margin-top:0;color:#6b7280">▼ 하락 주요 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>거실거실장</td><td>아카이브</td><td style="text-align:left">아카이브 5000 화이트 멀티수납장 1600_높은선반형</td><td>0.24</td><td>0.18</td><td><span class="badge-dn">-24.6%</span></td></tr><tr><td>거실소파</td><td>모아</td><td style="text-align:left">모아 5000 오트밀 3.5인용_A_2</td><td>0.28</td><td>0.28</td><td><span class="badge-dn">-0.9%</span></td></tr></tbody></table></div></div><div><div class="sub-title" style="margin-top:0">▲ 성장 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>거실거실장</td><td>플리츠</td><td style="text-align:left">플리츠 거실장 오트밀 AV장 2100</td><td>0.09</td><td>0.19</td><td><span class="badge-up">+104.8%</span></td></tr><tr><td>거실리클라이너</td><td>프라임노블_홈바형</td><td style="text-align:left">프라임 노블 3000 페더화이트 리클라이너 4인_홈바형_3</td><td>0.09</td><td>0.29</td><td><span class="badge-up">+239.6%</span></td></tr><tr><td>거실리클라이너</td><td>트라움라토</td><td style="text-align:left">트라움 라토 3000 카멜 리클라이너 1인</td><td>0.13</td><td>0.17</td><td><span class="badge-up">+30.0%</span></td></tr><tr><td>거실리클라이너</td><td>프라임노블</td><td style="text-align:left">프라임 노블 3000 페더화이트 리클라이너 4인_3</td><td>0.18</td><td>0.20</td><td><span class="badge-up">+12.9%</span></td></tr><tr><td>거실소파</td><td>브리오</td><td style="text-align:left">브리오 3000 라이트그레이 3.5인용_2</td><td>0.09</td><td>0.18</td><td><span class="badge-up">+104.5%</span></td></tr></tbody></table></div></div></div>    <div class="ana-grid" style="margin-top:14px">
+      <div class="insight good-insight"><strong>① 스카이라이브 TV장 +202.6% — 거실 가구 수요 전환 신호</strong><br>스카이라이브 7000 화이트 6단 TV장 1.30억으로 거실 1위. 3배 이상 성장. 오집 고객 거실 수납/디스플레이 가구 수요 강화 확인. TV장 추가 SKU 확장 여지 있음.</div>
+      <div class="insight warn-insight critical-insight"><strong>② 소파 판매 부진 — 오집 채널 내 소파 콘텐츠 경쟁력 약화</strong><br>네이버 소파 +122.3% vs 오집 거실 -15.8%. 엠마컴포트·아르떼·에마 소파 전반 하락. 오집 특성(인테리어 비주얼 중심)에 맞는 소파 콘텐츠(라이프스타일 이미지, 소재 클로즈업) 부족.</div>
+    </div>
+    <div id="s6-strategy" class="sub-title">향후 운영 전략 제안</div>
+    <div class="strategy-grid">
+      <div class="strategy-card" style="border-top-color:#4b5563"><h4>① 스카이라이브 TV장 라인업 확대</h4><p>+202.6% 검증 완료. 색상(화이트 외 우드·그레이)·폭·단수 다변화. 거실 TV장 기획전 운영. 소파+TV장 코디 세트 노출로 교차 구매 유도</p></div>
+      <div class="strategy-card" style="border-top-color:#374151"><h4>② 프라임노블 홈바형·아르떼 육성</h4><p>프라임노블 홈바형 +239.6%, 아르떼 +104.8% 성장 확인. 오집 고객 홈바·리클라이너 수요 검증. 색상 다양화(페더화이트 외 그레이) 및 3인·4인 구성 병행 노출</p></div>
+      <div class="strategy-card" style="border-top-color:#374151"><h4>③ 소파 비주얼 콘텐츠 전면 리뉴얼</h4><p>오집 특성에 맞는 라이프스타일 사진(넓은 거실, 자연채광) 및 패브릭 소재감 영상·360도 뷰 제작. 엠마컴포트·테이즈 상세 페이지 리뉴얼로 전환율 제고</p></div>
+    </div>
+  </section>
+
+  <section id="s7">
+    <div class="sec-title"><span class="badge" style="background:#6b7280;color:#fff">7</span> 수납 카테고리 하락 원인 분석 <small style="font-size:11px;font-weight:400;color:#64748b;margin-left:8px">기준: 26년 1~4월 vs 25년 1~4월</small></div>
+    <div class="insight warn-insight critical-insight"><strong>핵심 진단</strong> — 수납(최대 카테고리) 전체 <strong>-13.7%</strong> 하락. 주요 스테디셀러(샘베딩 드레스룸·W옷장) 전반 감소. 네이버 채널 동기간 +31.6%로 정반대 흐름 — 채널 특이적 원인 점검 필요.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px"><div><div class="sub-title" style="margin-top:0;color:#6b7280">▼ 하락 주요 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>침실수납장</td><td>스테디</td><td style="text-align:left">스테디SB 7000 W옷장 3단서랍A 800_W_5</td><td>0.54</td><td>0.32</td><td><span class="badge-dn">-40.7%</span></td></tr></tbody></table></div></div><div><div class="sub-title" style="margin-top:0">▲ 성장 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>드레스룸몸통</td><td>샘베딩194 C/C</td><td style="text-align:left">샘베딩 W드레스룸 긴장 B 800(D600)_7</td><td>0.25</td><td>0.55</td><td><span class="badge-up">+120.9%</span></td></tr><tr><td>드레스룸몸통</td><td>샘베딩194 C/C</td><td style="text-align:left">샘베딩 W드레스룸 짧은장 A 800(D600)_7</td><td>0.63</td><td>1.06</td><td><span class="badge-up">+68.0%</span></td></tr><tr><td>드레스룸몸통</td><td>바이엘 채널</td><td style="text-align:left">바이엘 6000 노출서랍장 화이트 1000_3단서랍_W 6000</td><td>0.22</td><td>0.26</td><td><span class="badge-up">+19.2%</span></td></tr><tr><td>침실도어</td><td>베이직</td><td style="text-align:left">샘베딩 화이트 6단 도어 400(H1934)_전체_3</td><td>0.43</td><td>1.30</td><td><span class="badge-up">+202.6%</span></td></tr><tr><td>침실수납장</td><td>베이직</td><td style="text-align:left">샘베딩 W옷장 긴장A 800_3단서랍_8</td><td>0.43</td><td>0.44</td><td><span class="badge-up">+4.0%</span></td></tr></tbody></table></div></div></div>    <div class="ana-grid" style="margin-top:14px">
+      <div class="insight warn-insight critical-insight"><strong>① 스테디셀러 전반 하락 — 채널 노출 경쟁력 약화 추정</strong><br>샘베딩 드레스룸·W옷장 등 주력 시리즈가 네이버에서는 성장 중임에도 오집에서 하락. 오집 수납 카테고리 내 검색 노출 순위 하락, 경쟁 상품 증가, 콘텐츠 노후화 중 원인 파악 필요.</div>
+      <div class="insight warn-insight"><strong>② 신규 라인 유입 미흡</strong><br>스카이라이브 TV장(+202.6%, 1.30억) 단독 성장. 네이버에서 검증된 스테디SB 7000 신라인·바이엘 키큰옷장이 오집 수납 채널에서는 아직 미진한 성과. 신규 라인 론칭 및 콘텐츠 집중 투자 시급.</div>
+    </div>
+    <div id="s7-strategy" class="sub-title">향후 운영 전략 제안</div>
+    <div class="strategy-grid">
+      <div class="strategy-card" style="border-top-color:#374151"><h4>① 신규 성장 라인 오집 진입 가속화</h4><p>네이버 검증 스테디SB 7000·바이엘 6000 키큰옷장 오집 신규 등록/재노출. 리뷰·포토 콘텐츠 선행 확보 후 입점 첫 달 집중 노출로 초기 판매 부스트</p></div>
+      <div class="strategy-card" style="border-top-color:#374151"><h4>② 샘베딩 스테디셀러 콘텐츠 리뉴얼</h4><p>기존 W드레스룸·W옷장 상세 페이지 리뉴얼. 실사 스타일링 사진·3D 배치 가이드·고객 리뷰 영상 추가로 오집 비주얼 콘텐츠 강화</p></div>
+      <div class="strategy-card" style="border-top-color:#6b7280"><h4>③ 오집 단독 기획전 기획</h4><p>이사철(3~4월) 수납 토탈 기획전 선점. 옷장+서랍장+드레스룸 세트 할인으로 객단가 방어. 오집 단독 구성·색상 제공으로 플랫폼 충성도 확보</p></div>
+      <div class="strategy-card" style="border-top-color:#6b7280"><h4>④ 스카이라이브 TV장 모멘텀 확대</h4><p>+202.6% 검증 완료. 색상(우드·그레이) 및 단수 라인업 확보. TV장 전용 기획전 운영 및 거실 소파와 코디 세트 교차 노출</p></div>
+      <div class="strategy-card" style="border-top-color:#9ca3af"><h4>⑤ 채널 노출·가격 경쟁력 점검</h4><p>동일 상품 네이버 vs 오집 가격·할인 조건 비교. 오집 검색 순위·카테고리 노출 현황 분석. 경쟁 상품 대비 리뷰 수·평점 차이 확인 후 콘텐츠 강화 우선순위 결정</p></div>
+    </div>
+  </section>
+
+  <section id="s8">
+    <div class="sec-title"><span class="badge" style="background:#9ca3af">8</span> 키즈 카테고리 하락 원인 분석 <small style="font-size:11px;font-weight:400;color:#64748b;margin-left:8px">기준: 26년 1~4월 vs 25년 1~4월</small></div>
+    <div class="insight warn-insight"><strong>키즈 YoY -22.9%</strong> (5.27억 → 4.06억) — 샘키즈 7000 신라인(매트리스·데이베드·수납장) 3종 신규 진입에도, 기존 구형 라인 전반 부진으로 전체 하락.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px"><div><div class="sub-title" style="margin-top:0;color:#6b7280">▼ 하락 주요 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>자녀방수납장</td><td>1305</td><td style="text-align:left">샘키즈2 7000 화이트 수납장 1305_화이트/라이트베이지</td><td>0.25</td><td>0.20</td><td><span class="badge-dn">-22.9%</span></td></tr></tbody></table></div></div><div><div class="sub-title" style="margin-top:0">▲ 성장 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>자녀방수납장</td><td>1305</td><td style="text-align:left">샘키즈 7000 화이트 수납장 1305_브라운/오트밀/그레이</td><td>0.00</td><td>0.24</td><td><span class="new-badge">신규</span></td></tr><tr><td>자녀방옷장</td><td>키큰옷장</td><td style="text-align:left">샘키즈 7000 화이트 키큰옷장 1600 서랍1단행거,일반2단행거_베이지</td><td>0.02</td><td>0.11</td><td><span class="badge-up">+533.1%</span></td></tr><tr><td>자녀방책장</td><td>책장</td><td style="text-align:left">샘키즈2 7000 화이트 책장 1305</td><td>0.10</td><td>0.12</td><td><span class="badge-up">+17.8%</span></td></tr><tr><td>자녀방침대</td><td>데이베드</td><td style="text-align:left">샘키즈 7000 화이트 침대 데이베드 SS_안전가드(W1400)_5</td><td>0.00</td><td>0.27</td><td><span class="new-badge">신규</span></td></tr><tr><td>침실매트리스</td><td>매트리스</td><td style="text-align:left">샘키즈 매트리스 SS_3</td><td>0.00</td><td>0.33</td><td><span class="new-badge">신규</span></td></tr></tbody></table></div></div></div>    <div class="ana-grid" style="margin-top:14px">
+      <div class="insight good-insight"><strong>① 샘키즈 7000 신라인 진입 — 회복 가능성 확인</strong><br>샘키즈 7000 매트리스(0.33억)·데이베드(0.27억)·수납장 1305(0.24억) 3종 신규 진입. 네이버에서 동일 라인 강성장 중. 오집에 충분한 콘텐츠·노출 투자 시 추가 성장 여지.</div>
+      <div class="insight warn-insight"><strong>② 구형 라인 전환기 진통</strong><br>샘키즈2 7000 수납장 1305(구형) -22.9%, 베이비장 등 구형 라인 하락. 신라인(샘키즈 7000) 판매 증가 속도가 구형 감소를 아직 상쇄 못하는 전환기. 구형 SKU 정리 속도 결정 필요.</div>
+    </div>
+    <div id="s8-strategy" class="sub-title">향후 운영 전략 제안</div>
+    <div class="strategy-grid">
+      <div class="strategy-card" style="border-top-color:#9ca3af"><h4>① 샘키즈 7000 신라인 오집 집중 육성</h4><p>네이버 성과 데이터 활용. 오집 키즈 인테리어 고객층 대상 스타일링 콘텐츠(컬러 조합, 방 배치 가이드) 강화. 키큰옷장+수납장+침대 풀세트 기획으로 단품 판매 보완</p></div>
+      <div class="strategy-card" style="border-top-color:#374151"><h4>② 하이가드 데이베드 안전 소구 강화</h4><p>샘키즈 7000 하이가드 데이베드 신규 진입. 오집 부모 고객 대상 안전 설계 소구. 아동 안전 인증·실사 사용 영상으로 구매 결정 지원. 4면 안전가드·높이 조절 기능 강조</p></div>
+      <div class="strategy-card" style="border-top-color:#374151"><h4>③ 구형 라인 전략적 정리</h4><p>샘키즈2 7000 구형 SKU 단계적 정리 및 재고 소진 집중. 신라인 전환 속도 가속화. 구형 라인 가격 할인을 통한 재고 소진으로 신라인 노출 공간 확보</p></div>
+    </div>
+  </section>
+
+  <section id="s9">
+    <div class="sec-title"><span class="badge" style="background:#6b7280">9</span> 침실 카테고리 현황 및 전략 <small style="font-size:11px;font-weight:400;color:#64748b;margin-left:8px">기준: 26년 1~4월 vs 25년 1~4월</small></div>
+    <div class="insight good-insight"><strong>침실 YoY +0.4%</strong> (5.31억 → 5.33억) — <strong>전 카테고리 중 유일 성장</strong>. 노뜨 라텍스탑 매트리스 +40.6%, 침대 신규 시리즈(모노·클라썸) 진입이 기존 노뜨 컴포트 하락 상쇄.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px"><div><div class="sub-title" style="margin-top:0;color:#6b7280">▼ 하락 주요 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>침실매트리스</td><td>노뜨 컴포트</td><td style="text-align:left">노뜨 컴포트 매트 포켓스프링 SS_3</td><td>0.54</td><td>0.49</td><td><span class="badge-dn">-8.8%</span></td></tr><tr><td>침실침대</td><td>아임빅 기본헤드</td><td style="text-align:left">뉴아임2 7000 화이트 수납침대 SS_일반헤드_5</td><td>0.25</td><td>0.20</td><td><span class="badge-dn">-18.0%</span></td></tr><tr><td>침실침대</td><td>포엠</td><td style="text-align:left">포엠 7000 내추럴오크 침대 Q/K_일반형,패널</td><td>0.15</td><td>0.14</td><td><span class="badge-dn">-2.7%</span></td></tr></tbody></table></div></div><div><div class="sub-title" style="margin-top:0">▲ 성장 상품</div><div class="tbl-wrap" style="margin-bottom:0"><table><thead><tr><th>품목</th><th>시리즈</th><th style="text-align:left">상품명</th><th>25년(억)</th><th>26년(억)</th><th>YoY</th></tr></thead><tbody><tr><td>침실매트리스</td><td>노뜨 라텍스탑</td><td style="text-align:left">노뜨 라텍스탑 매트 포켓스프링 Q</td><td>0.09</td><td>0.17</td><td><span class="badge-up">+81.8%</span></td></tr><tr><td>침실매트리스</td><td>노뜨 베이직</td><td style="text-align:left">노뜨 베이직 매트리스 SS</td><td>0.21</td><td>0.30</td><td><span class="badge-up">+40.6%</span></td></tr><tr><td>침실매트리스</td><td>노뜨 라텍스탑</td><td style="text-align:left">노뜨 라텍스탑 매트 포켓스프링 K</td><td>0.13</td><td>0.16</td><td><span class="badge-up">+23.7%</span></td></tr><tr><td>침실매트리스</td><td>노뜨 컴포트</td><td style="text-align:left">노뜨 컴포트 매트 포켓스프링 Q_3</td><td>0.17</td><td>0.19</td><td><span class="badge-up">+15.2%</span></td></tr><tr><td>침실침대</td><td>포엠</td><td style="text-align:left">포엠 7000 코튼그레이 침대 Q/K_일반형,패널</td><td>0.09</td><td>0.14</td><td><span class="badge-up">+56.8%</span></td></tr></tbody></table></div></div></div>    <div class="ana-grid" style="margin-top:14px">
+      <div class="insight good-insight"><strong>① 라텍스탑 전 사이즈 성장 — 고단가 전환 수요 확인</strong><br>노뜨 라텍스탑 SS(+40.6%)·Q(+81.8%)·K(+23.7%) 전 사이즈 성장. 오집 고객의 프리미엄 매트리스 수요 확인. 기존 노뜨 컴포트(-8.8%) 하락을 상쇄하며 침실 카테고리 방어.</div>
+      <div class="insight warn-insight"><strong>② 기존 노뜨 컴포트·뉴아임2 일부 하락</strong><br>노뜨 컴포트 SS -8.8%, 뉴아임2 일반헤드 -18.0%, 슬림수납 -52.9% 하락. 신규 모노·클라썸 라인 진입이 포트폴리오 전환 중. 구형 라인 SKU 정리 및 신규 라인 육성 병행 필요.</div>
+    </div>
+    <div id="s9-strategy" class="sub-title">향후 운영 전략 제안</div>
+    <div class="strategy-grid">
+      <div class="strategy-card" style="border-top-color:#6b7280"><h4>① 라텍스탑 고단가 라인 집중 육성</h4><p>노뜨 라텍스탑 전 사이즈 성장 확인. 프리미엄 매트리스 포지셔닝 강화. 침대 구매 고객 대상 라텍스탑 교차 노출로 교차 구매 전환율 제고</p></div>
+      <div class="strategy-card" style="border-top-color:#6b7280"><h4>② 모노·클라썸 신규 침대 라인 육성</h4><p>신규 라인 오집 인테리어 트렌드에 맞는 콘텐츠 강화(라이프스타일 사진, 360도 뷰). SKU 확대(색상·사이즈) 검토. 침대+매트리스 세트 번들 기획으로 객단가 상승</p></div>
+      <div class="strategy-card" style="border-top-color:#374151"><h4>③ 침대+매트리스 번들 세트 기획</h4><p>침대 구매 고객 매트리스 별도 구매 패턴 분석. 침대+라텍스탑 번들 세트로 1회 구매 객단가 상승 및 교차 구매 유도. 네이버 채널 검증 데이터 활용</p></div>
+      <div class="strategy-card" style="border-top-color:#374151"><h4>④ 밸런스 볼륨탑·스테디2 컴피 오집 진입</h4><p>네이버에서 검증된 밸런스 볼륨탑(+149%)·스테디2 컴피(+480%) 오집 신규 론칭 검토. 오집 매트리스 포트폴리오 다변화로 노뜨 컴포트 의존도 완화</p></div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const months = ["25.06", "25.07", "25.08", "25.09", "25.10", "25.11", "25.12", "26.01", "26.02", "26.03", "26.04"];
+const pbData  = [7.8693, 8.5983, 8.2442, 8.256, 6.9516, 7.7355, 10.8811, 9.415, 6.2334, 8.3452, 5.5549];
+const epData  = [2.4681, 2.193, 3.0766, 3.7421, 3.8904, 3.3415, 4.2665, 4.0937, 3.4189, 4.364, 3.295];
+const totData = [10.3374, 10.7913, 11.3208, 11.9981, 10.842, 11.077, 15.1476, 13.5087, 9.6523, 12.7092, 8.8499];
+const yoyPB   = [89.6, 49.7, 45.9, 31.5, 21.4, 27.1, 39.2, 9.7, -24.0, -26.3, -41.3];
+const yoyEP   = [-3.1, -22.9, 16.5, 75.5, 81.1, 48.4, 58.3, 39.3, -2.4, 41.2, 31.2];
+const yoyTot  = [54.4, 25.6, 36.5, 42.6, 37.7, 32.8, 44.1, 17.2, -17.5, -11.8, -26.1];
+const catNames26 = ["수납", "거실", "침실", "키즈", "주방", "서재"];
+const catData26  = [10.1566, 5.3998, 5.3276, 4.0594, 2.685, 1.9201];
+const catData25  = [11.7653, 6.4125, 5.3067, 5.2672, 5.5384, 3.2781];
+const catShare26 = [34.4, 18.3, 18.0, 13.7, 9.1, 6.5];
+const catShare25 = [31.3, 17.1, 14.1, 14.0, 14.7, 8.7];
+const catColors  = ["#374151", "#4b5563", "#6b7280", "#9ca3af", "#dc2626", "#1f2937"];
+
+function yoyBadge(v){
+  if(v===null||v===undefined) return '—';
+  if(v>0) return `<span class="badge-up">+${v.toFixed(1)}%</span>`;
+  if(v<0) return `<span class="badge-dn">${v.toFixed(1)}%</span>`;
+  return `<span class="badge-neu">0.0%</span>`;
+}
+const tbM = document.getElementById('tbMonthly');
+months.forEach((m,i)=>{
+  tbM.innerHTML += `<tr><td>${m}</td><td>${pbData[i].toFixed(2)}</td><td>${epData[i].toFixed(2)}</td><td><strong>${totData[i].toFixed(2)}</strong></td><td>${yoyBadge(yoyPB[i])}</td><td>${yoyBadge(yoyEP[i])}</td><td>${yoyBadge(yoyTot[i])}</td></tr>`;
+});
+const tbR = document.getElementById('tbRatio');
+months.forEach((m,i)=>{
+  const pr=(pbData[i]/totData[i]*100).toFixed(1);
+  const er=(epData[i]/totData[i]*100).toFixed(1);
+  tbR.innerHTML += `<tr><td>${m}</td><td>${pbData[i].toFixed(2)}</td><td>${pr}%</td><td>${epData[i].toFixed(2)}</td><td>${er}%</td></tr>`;
+});
+
+new Chart(document.getElementById('chartAnnual'),{type:'bar',data:{labels:['1월','2월','3월','4월'],datasets:[{label:'2025 PB',data:[8.58,8.20,11.32,9.46],backgroundColor:'#374151',borderRadius:3,stack:'2025'},{label:'2025 EP',data:[2.94,3.50,3.09,2.51],backgroundColor:'#9ca3af',borderRadius:3,stack:'2025'},{label:'2026 PB',data:[9.415,6.2334,8.3452,5.5549],backgroundColor:'#1e40af',borderRadius:3,stack:'2026'},{label:'2026 EP',data:[4.0937,3.4189,4.364,3.295],backgroundColor:'#93c5fd',borderRadius:3,stack:'2026'}]},options:{plugins:{legend:{labels:{font:{size:11},boxWidth:12}}},scales:{x:{ticks:{font:{size:11}},stacked:true},y:{ticks:{font:{size:10}},stacked:true,title:{display:true,text:'억원',font:{size:10}}}}},plugins:[{id:'annualLbl',afterDraw(chart){const ctx=chart.ctx;ctx.save();ctx.font='600 10px "Noto Sans KR",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);meta.data.forEach((bar,i)=>{const h=bar.base-bar.y;if(h>18){ctx.fillStyle='#ffffff';ctx.fillText(ds.data[i].toFixed(1)+'억',bar.x,(bar.y+bar.base)/2);}});});ctx.restore();}}]});
+
+const pbPlugin={id:'pbLabel',afterDraw(chart){const ctx=chart.ctx;ctx.save();ctx.font='600 10px "Noto Sans KR",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#ffffff';chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);meta.data.forEach((bar,i)=>{const h=bar.base-bar.y;if(h>18)ctx.fillText(ds.data[i].toFixed(1)+'억',bar.x,(bar.y+bar.base)/2);});});ctx.restore();}};
+new Chart(document.getElementById('chartMonthly'),{type:'bar',data:{labels:months,datasets:[{label:'PB',data:pbData,backgroundColor:'#374151',borderRadius:3,stack:'a'},{label:'EP',data:epData,backgroundColor:'#9ca3af',borderRadius:3,stack:'a'}]},options:{plugins:{legend:{labels:{font:{size:11},boxWidth:12}}},scales:{x:{ticks:{font:{size:10}}},y:{ticks:{font:{size:10}},title:{display:true,text:'억원',font:{size:10}}}}},plugins:[pbPlugin]});
+
+const yoyPlugin={id:'yoyLbl',afterDraw(chart){const ctx=chart.ctx;const meta=chart.getDatasetMeta(0);ctx.save();ctx.font='bold 10px "Noto Sans KR",sans-serif';ctx.textAlign='center';meta.data.forEach((pt,i)=>{const v=yoyTot[i];const pos=v>=0;ctx.fillStyle=pos?'#374151':'#dc2626';ctx.textBaseline=pos?'bottom':'top';ctx.fillText((pos?'+':'')+v.toFixed(1)+'%',pt.x,pos?pt.y-8:pt.y+8);});ctx.restore();}};
+new Chart(document.getElementById('chartMonthlyYoY'),{type:'line',data:{labels:months,datasets:[{label:'합산 YoY(%)',data:yoyTot,borderColor:'#374151',backgroundColor:'rgba(55,65,81,0.08)',pointBackgroundColor:yoyTot.map(v=>v>=0?'#374151':'#dc2626'),pointBorderColor:yoyTot.map(v=>v>=0?'#374151':'#dc2626'),pointRadius:5,pointHoverRadius:7,tension:0.3,fill:true}]},options:{plugins:{legend:{labels:{font:{size:11},boxWidth:12}}},scales:{x:{ticks:{font:{size:10}}},y:{ticks:{font:{size:10}},title:{display:true,text:'YoY (%)',font:{size:10}}}}},plugins:[yoyPlugin]});
+
+new Chart(document.getElementById('chartRatio'),{type:'bar',data:{labels:months,datasets:[{label:'PB(%)',data:months.map((_,i)=>+(pbData[i]/totData[i]*100).toFixed(1)),backgroundColor:'#374151',stack:'r'},{label:'EP(%)',data:months.map((_,i)=>+(epData[i]/totData[i]*100).toFixed(1)),backgroundColor:'#9ca3af',stack:'r'}]},options:{plugins:{legend:{labels:{font:{size:11},boxWidth:12}}},scales:{x:{ticks:{font:{size:10}}},y:{ticks:{font:{size:10}},max:100,title:{display:true,text:'%',font:{size:10}}}}}});
+
+new Chart(document.getElementById('chartPB26'),{type:'bar',data:{labels:['1월','2월','3월','4월'],datasets:[{label:'25년',data:[8.58,8.20,11.32,9.47],backgroundColor:'#9ca3af',borderRadius:4},{label:'26년',data:[9.42,6.23,8.35,5.55],backgroundColor:'#374151',borderRadius:4}]},options:{plugins:{legend:{labels:{font:{size:11},boxWidth:12}}},scales:{x:{ticks:{font:{size:11}}},y:{ticks:{font:{size:10}},title:{display:true,text:'억원',font:{size:10}}}}},plugins:[{id:'pb26Lbl',afterDraw(chart){const ctx=chart.ctx;ctx.save();ctx.font='600 10px "Noto Sans KR",sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);const color=di===0?'#6b7280':'#374151';ctx.fillStyle=color;meta.data.forEach((bar,i)=>{ctx.fillText(ds.data[i].toFixed(1)+'억',bar.x,bar.y-4);});});ctx.restore();}}]});
+
+new Chart(document.getElementById('chartCatYoY'),{type:'bar',data:{labels:catNames26,datasets:[{label:'25년(억)',data:catData25,backgroundColor:'#9ca3af',borderRadius:3},{label:'26년(억)',data:catData26,backgroundColor:'#374151',borderRadius:3}]},options:{plugins:{legend:{labels:{font:{size:11},boxWidth:12}}},scales:{x:{ticks:{font:{size:11}}},y:{ticks:{font:{size:10}},title:{display:true,text:'억원',font:{size:10}}}}},plugins:[{id:'catYoYLbl',afterDraw(chart){const ctx=chart.ctx;ctx.save();ctx.font='600 10px "Noto Sans KR",sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);const color=di===0?'#6b7280':'#374151';ctx.fillStyle=color;meta.data.forEach((bar,i)=>{ctx.fillText(ds.data[i].toFixed(1)+'억',bar.x,bar.y-4);});});ctx.restore();}}]});
+
+const piePlugin={id:'pieLbl',afterDraw(chart){const ctx=chart.ctx;const meta=chart.getDatasetMeta(0);const ds=chart.data.datasets[0];const labels=chart.data.labels;ctx.save();meta.data.forEach((arc,i)=>{const mid=(arc.startAngle+arc.endAngle)/2;const r=(arc.outerRadius+arc.innerRadius)/2;const x=arc.x+Math.cos(mid)*r;const y=arc.y+Math.sin(mid)*r;const arcLen=(arc.endAngle-arc.startAngle)*r;if(arcLen>22){ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='bold 9px "Noto Sans KR",sans-serif';ctx.textBaseline='middle';ctx.fillText(labels[i],x,y-5.5);ctx.font='9px "Noto Sans KR",sans-serif';ctx.fillText(ds.data[i].toFixed(1)+'%',x,y+5.5);}});ctx.restore();}};
+new Chart(document.getElementById('chartCatShare'),{type:'doughnut',data:{labels:catNames26,datasets:[{data:catShare26,backgroundColor:catColors,borderWidth:2,borderColor:'#fff'}]},options:{plugins:{legend:{display:false}},cutout:'65%'},plugins:[piePlugin]});
+new Chart(document.getElementById('chartCatShare25'),{type:'doughnut',data:{labels:catNames26,datasets:[{data:catShare25,backgroundColor:catColors,borderWidth:2,borderColor:'#fff'}]},options:{plugins:{legend:{display:false}},cutout:'65%'},plugins:[piePlugin]});
+
+const catYoYData=catNames26.map((_,i)=>catData25[i]>0?+((catData26[i]/catData25[i]-1)*100).toFixed(1):0);
+const catYoYPlugin={id:'catYoYLbl',afterDraw(chart){const ctx=chart.ctx;const meta=chart.getDatasetMeta(0);ctx.save();ctx.font='bold 11px "Noto Sans KR",sans-serif';ctx.textBaseline='middle';meta.data.forEach((bar,i)=>{const v=catYoYData[i];const pos=v>=0;ctx.fillStyle=pos?'#374151':'#dc2626';ctx.textAlign=pos?'left':'right';const x=pos?bar.x+5:bar.x-5;ctx.fillText((pos?'+':'')+v.toFixed(1)+'%',x,bar.y);});ctx.restore();}};
+new Chart(document.getElementById('chartCatYoYBar'),{type:'bar',data:{labels:catNames26,datasets:[{label:'YoY(%)',data:catYoYData,backgroundColor:catYoYData.map(v=>v>=0?'rgba(55,65,81,0.8)':'rgba(220,38,38,0.8)'),borderRadius:3}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:10}},title:{display:true,text:'YoY (%)',font:{size:10}}},y:{ticks:{font:{size:11}}}}},plugins:[catYoYPlugin]});
+
+function showTab(name){
+  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
+  document.getElementById('tab-'+name)?.classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(btn=>{if(btn.textContent.includes(name))btn.classList.add('active');});
+}
+const sects=document.querySelectorAll('section[id],div[id]');
+const navAs=document.querySelectorAll('nav a');
+window.addEventListener('scroll',()=>{let cur='';sects.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});navAs.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+cur)a.classList.add('active');});},{passive:true});
+</script>
+
+</body></html>
